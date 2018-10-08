@@ -3,7 +3,7 @@ The Challenge - Predict Natural Disasters
 
 Stark101's Proposal:
 
-In general, it takes a lot of time for the disaster management authorities to be notified about any natural disaster that might have taken place. 
+Usually, it takes a lot of time for the disaster management authorities to be notified about any natural disaster that might have taken place. 
 
 For example: https://www.usgs.gov/faqs/how-fast-does-earthquake-information-get-posted-web-site-get-sent-out-earthquake-notification?qt-news_science_products=0#qt-news_science_products
 suggests that it might take upto 20 minutes in some areas to know whether there has been an earthquaqe in that part of the world. In this project we aim to provide a solution to the same.
