@@ -1,5 +1,5 @@
 # Code_Fun_Do_PlusPlus
-The Challenge - Predict Natural Disasters
+The Challenge - Predict,Detect or Manage Natural Disasters
 
 Stark101's Proposal:
 
