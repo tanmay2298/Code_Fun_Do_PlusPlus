@@ -12,4 +12,4 @@ The live feed provided by the government owned surveilance tools (cameras/sateli
 
 Since this is done periodically (say every 30 seconds), the communication gap is bridged between the concerned authorities and the line of action and quick relief can be brought to the affected area.
 
-We at Stark101 sincerely hope to implement this solution because this methodology can bring about quick relief where every minute is precious
+We at Stark101 sincerely hope to implement this solution because this methodology can bring about quick relief where every minute is precious.
