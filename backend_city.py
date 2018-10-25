@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-
+from tkinter import messagebox
 
 def draw_lines (img, lines) : 
     for line in lines : 
@@ -43,7 +43,6 @@ def detect_discrepancy(filename) :
 
         edges = cv2.Canny(mask, 75, 150)
         edges = cv2.GaussianBlur(edges ,(5,5) , 0)
-
         try : 
             #detected lines 
             lines = cv2.HoughLinesP(edges, 1, np.pi/180 , 100 , minLineLength = 20)
@@ -56,8 +55,7 @@ def detect_discrepancy(filename) :
                 ave_same = ( ave_same*(frame_no/2 - 1) + same ) / (frame_no/2) #computing the average 
         # if the number of same lines falls below a threshold and lines are being detected (i.e not due to traffic) ->  high chance of an earthquake
                 if same < 5 and len(lines) > 10 : 
-                    print(same) # later change to ping to the higher authority... 
-
+                    messagebox.showinfo("ALERT!!!!", " This feed needs attention ASAP")                        
         ## if average needs to be verified, uncomment these lines 
         # if (frame_no%50 == 0 ) : 
         #     print(ave_same)           
