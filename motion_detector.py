@@ -22,13 +22,10 @@ else:
 	vs = cv2.VideoCapture(args["video"])
  
 # initialize the first frame in the video stream
+
 firstFrame = None
-
-
-
+prev = 0
 global t1, t2 # for time init and later seeing the difference in how long the room was occupied
-global flag
-
 # loop over the frames of the video
 while True:
 	# grab the current frame and initialize the occupied/unoccupied
@@ -36,8 +33,8 @@ while True:
 	frame = vs.read()
 	frame = frame if args.get("video", None) is None else frame[1]
 	text = "Unoccupied"
- 	
-	flag = 0
+	occupied = 0
+
 	# if the frame could not be grabbed, then we have reached the end
 	# of the video
 	if frame is None:
@@ -67,10 +64,12 @@ while True:
 	# loop over the contours
 	for c in cnts:
 		# if the contour is too small, ignore it
-		if cv2.contourArea(c) < args["min_area"]:
+		if cv2.contourArea(c) < args["min_area"] :  
 			continue
 		# compute the bounding box for the contour, draw it on the frame,
 		# and update the text
+		if occupied == 0 :
+			occupied = 1 
 		(x, y, w, h) = cv2.boundingRect(c)
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 		text = "Occupied"
@@ -84,14 +83,21 @@ while True:
 
 	# show the frame and record if the user presses a key
 	cv2.imshow("Security Feed", frame)
-	cv2.imshow("Thresh", thresh)
-	cv2.imshow("Frame Delta", frameDelta)
+	#cv2.imshow("Thresh", thresh)
+	#cv2.imshow("Frame Delta", frameDelta)
 	key = cv2.waitKey(1) & 0xFF
  
 	# if the `q` key is pressed, break from the lop
 	if key == ord("q"):
 		break
- 
+ 	
+	if prev != occupied : 
+		if occupied == 0 : 
+			print("frame exit", datetime.datetime.now())
+		else : 
+			print("frame entry", datetime.datetime.now())
+	prev = occupied # previous frames state 
+
 # cleanup the camera and close any open windows
 vs.stop() if args.get("video", None) is None else vs.release()
 cv2.destroyAllWindows()
