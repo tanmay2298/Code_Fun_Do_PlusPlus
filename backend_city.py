@@ -23,6 +23,9 @@ def check_lines(ave_list) :
 
 # capture the video frames 
 def detect_discrepancy(filename) : 
+    if filename == "" : 
+        messagebox.showinfo("ERROR!!", " Enter a live camera feed ")
+        return
     cap = cv2.VideoCapture(filename)
     frame_no = 0  
     ave_same = 0 
@@ -55,7 +58,8 @@ def detect_discrepancy(filename) :
                 ave_same = ( ave_same*(frame_no/2 - 1) + same ) / (frame_no/2) #computing the average 
         # if the number of same lines falls below a threshold and lines are being detected (i.e not due to traffic) ->  high chance of an earthquake
                 if same < 5 and len(lines) > 10 : 
-                    messagebox.showinfo("ALERT!!!!", " This feed needs attention ASAP")                        
+                    messagebox.showinfo("ALERT!!!!", " This feed needs attention ASAP")
+                    break                        
         ## if average needs to be verified, uncomment these lines 
         # if (frame_no%50 == 0 ) : 
         #     print(ave_same)           
@@ -63,7 +67,7 @@ def detect_discrepancy(filename) :
             pass
         cv2.imshow('frame', frame)
         k = cv2.waitKey(1) & 0xFF
-        if k == 27:
+        if k == ord("q"):
             break
     cv2.destroyAllWindows()
 

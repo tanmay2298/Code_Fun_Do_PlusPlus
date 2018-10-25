@@ -5,9 +5,13 @@ import datetime
 import imutils
 import time
 import cv2
+from tkinter import messagebox
 from database_module import create_table, insert_data, update, get_id
 
 def entry_exit(filename, min_area = 500) : 
+	if filename == "" : 
+		messagebox.showinfo("ERROR!!", " Enter a live camera feed ")
+		return
 	create_table()
 	# otherwise, we are reading from a video file
 	vs = cv2.VideoCapture(filename)
