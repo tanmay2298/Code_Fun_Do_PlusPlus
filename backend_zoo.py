@@ -15,7 +15,10 @@ def entry_exit(filename, min_area = 500) :
 		return
 	create_table()
 	# otherwise, we are reading from a video file
-	vs = cv2.VideoCapture(filename)
+	if filename == "webcam" : 
+		vs = cv2.VideoCapture(0)
+	else : 
+		vs = cv2.VideoCapture(filename)
 	 
 	# initialize the first frame in the video stream
 	firstFrame = None
