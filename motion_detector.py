@@ -5,7 +5,10 @@ import datetime
 import imutils
 import time
 import cv2
- 
+from database_module import create_table, insert_data, update, get_id
+
+create_table()
+
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
@@ -26,6 +29,7 @@ else:
 firstFrame = None
 prev = 0
 global t1, t2 # for time init and later seeing the difference in how long the room was occupied
+global id_
 # loop over the frames of the video
 while True:
 	# grab the current frame and initialize the occupied/unoccupied
@@ -93,9 +97,14 @@ while True:
  	
 	if prev != occupied : 
 		if occupied == 0 : 
-			print("frame exit", datetime.datetime.now())
+			t2 = datetime.datetime.now()
+			print("frame exit: ", t2)
+			id_ = get_id()
+			update(id_, t1, t2)
 		else : 
-			print("frame entry", datetime.datetime.now())
+			t1 = datetime.datetime.now()
+			print("frame entry: ", t1)
+			insert_data(t1, 0)
 	prev = occupied # previous frames state 
 
 # cleanup the camera and close any open windows
