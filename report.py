@@ -21,7 +21,6 @@ for i in range(0, len(entry_time_temp)):
     entry_time.append(datetime.strptime(entry_time_temp.iloc[i], '%Y-%m-%d %H:%M:%S.%f'))
     exit_time.append(datetime.strptime(exit_time_temp.iloc[i], '%Y-%m-%d %H:%M:%S.%f'))
 
-# print(entry_time)
 def time_diff(entry_time, exit_time):
     elapsedTime = exit_time - entry_time
     elapsedTime = divmod(elapsedTime.total_seconds(), 60)
@@ -32,7 +31,7 @@ for i in range(0, len(entry_time)):
     entries.append(i)
     time_difference.append(time_diff(entry_time[i], exit_time[i]))
     time2.append(time_difference[i][1])
-print(time2[0])
+
 plt.title('Daily Analysis')
 plt.xlabel('Instance')
 plt.ylabel('Time Period of Animal Detection')

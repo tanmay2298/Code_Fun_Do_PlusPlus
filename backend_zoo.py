@@ -7,6 +7,7 @@ import time
 import cv2
 from tkinter import messagebox
 from database_module import create_table, insert_data, update, get_id
+import os 
 
 def entry_exit(filename, min_area = 500) : 
 	if filename == "" : 
@@ -101,3 +102,4 @@ def entry_exit(filename, min_area = 500) :
 
 	# cleanup the camera and close any open windows
 	cv2.destroyAllWindows()
+	os.system('python3 report.py')
