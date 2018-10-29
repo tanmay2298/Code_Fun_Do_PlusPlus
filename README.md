@@ -12,4 +12,8 @@ The live feed provided by the government owned surveilance tools (cameras/sateli
 
 Since this is done periodically (say every 30 seconds), the communication gap is bridged between the concerned authorities and the line of action and quick relief can be brought to the affected area.
 
+The second feature of our project is to Predict Natural Disasters. This is done by capturing animal movements in a zoo as it is common knowledge that animals have a tendency to show erratic behaviour a few days before a calamity. This is done through live cctv surveilance of animals in zoos in terms of them coming in and out of their respective caves and then storing that information into a database. This data is analysed to observe anomalies and give the concerned authorities time to inform and prepare the public about the for a natural disaster.
+
 We at Stark101 sincerely hope to implement this solution because this methodology can bring about quick relief where every minute is precious.
+
+YouTube: https://www.youtube.com/watch?v=2GOf97N8iLM&t=34s
