@@ -17,3 +17,5 @@ The second feature of our project is to Predict Natural Disasters. This is done 
 We at Stark101 sincerely hope to implement this solution because this methodology can bring about quick relief where every minute is precious.
 
 YouTube: https://www.youtube.com/watch?v=2GOf97N8iLM&t=34s
+
+To run: python3 frontend.py
