@@ -19,3 +19,6 @@ We at Stark101 sincerely hope to implement this solution because this methodolog
 YouTube: https://www.youtube.com/watch?v=2GOf97N8iLM&t=34s
 
 To run: python3 frontend.py
+
+Note -> A additional file credentials.py has to be created by the person using this program,wherein the details of the access of the access 
+Username, Password, Database name, driver and server name has to be provided. We are not providing our own details for security reasons. 
