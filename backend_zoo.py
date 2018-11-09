@@ -1,11 +1,11 @@
 # import the necessary packages
 from imutils.video import VideoStream
-import argparse
 import datetime
 import imutils
 import time
 import cv2
 from tkinter import messagebox
+from database_mod import create_table1, insert_data1
 from database_module import create_table, insert_data, update, get_id
 import os 
 
@@ -13,7 +13,8 @@ def entry_exit(filename, min_area = 500) :
 	if filename == "" : 
 		messagebox.showinfo("ERROR!!", " Enter a live camera feed ")
 		return
-	create_table()
+	create_table1()
+	create_table() 
 	# otherwise, we are reading from a video file
 	if filename == "webcam" : 
 		vs = cv2.VideoCapture(0)
@@ -95,12 +96,11 @@ def entry_exit(filename, min_area = 500) :
 			if occupied == 0 : 
 				t2 = datetime.datetime.now()
 				print("frame exit: ", t2)
-				id_ = get_id()
-				update(id_, t1, t2)
+				insert_data1(str(t1), str(t2))
+				insert_data(t1,t2)
 			else : 
 				t1 = datetime.datetime.now()
 				print("frame entry: ", t1)
-				insert_data(t1, 0)
 		prev = occupied # previous frames state 
 
 	# cleanup the camera and close any open windows
